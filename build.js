@@ -7,41 +7,46 @@ const serve = require('metalsmith-serve');
 const watch = require('metalsmith-watch');
 
 const command = process.argv[2];
-const development = command === 'watch';
+const development = command === 'development';
 
-const metalsmith = Metalsmith(__dirname)
-    .metadata({
-        foo: 'bar',
-        development: development
-    })
-    .source('./src')
-    .destination('./build')
-    .clean(true);
+const metalsmith = Metalsmith(__dirname);
+
+metalsmith.metadata({
+    foo: 'bar',
+    development: development
+});
 
 if (development) {
-    metalsmith
-        .use(watch({
-            livereload: true,
-            paths: {
-                "${source}/**/*": true,
-                "layouts/**/*": "**/*"
-            }
-        }))
-        .use(serve());
+
+    const rebuildOnlyChangedFile = true;
+    const rebuildAllFiles = "**/*";
+
+    metalsmith.use(watch({
+        livereload: true,
+        paths: {
+            "${source}/**/*": rebuildOnlyChangedFile,
+            "layouts/**/*": rebuildAllFiles
+        }
+    }));
+    
+    metalsmith.use(serve());
 }
 
-metalsmith
-    .use(static({
-        src: "node_modules/bootstrap-sass/assets/fonts/bootstrap",
-        dest: "fonts/bootstrap"
-    }))
-    .use(sass())
-    .use(inPlace())
-    .use(layouts('handlebars'))
-    .build(err => {
-        if (err) {
-            throw err;
-        } else {
-            console.log('Build succeeded');
-        }
-    });
+metalsmith.use(static({
+    src: "node_modules/bootstrap-sass/assets/fonts/bootstrap",
+    dest: "fonts/bootstrap"
+}));
+
+metalsmith.use(sass());
+
+metalsmith.use(inPlace());
+
+metalsmith.use(layouts('handlebars'));
+    
+metalsmith.build(err => {
+    if (err) {
+        throw err;
+    } else {
+        console.log('Build succeeded');
+    }
+});
