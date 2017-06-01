@@ -42,7 +42,7 @@ metalsmith.use(sass());
 metalsmith.use(inPlace());
 
 metalsmith.use(layouts('handlebars'));
-    
+
 metalsmith.build(err => {
     if (err) {
         throw err;

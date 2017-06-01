@@ -1,8 +1,11 @@
 {
   "name": "metalsmith-poc",
-  "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node build",
+    "development": "node build development"    
+  },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "handlebars": "^4.0.10",
