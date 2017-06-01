@@ -1,9 +1,10 @@
-const Metalsmith = require('metalsmith');
+const metalsmith = require('metalsmith');
 const layouts = require('metalsmith-layouts');
 const sass = require('metalsmith-sass');
 const static = require('metalsmith-static');
+const inPlace = require('metalsmith-in-place');
 
-Metalsmith(__dirname)
+metalsmith(__dirname)
     .metadata({
         foo: 'bar'
     })
@@ -14,6 +15,7 @@ Metalsmith(__dirname)
         src: "node_modules/bootstrap-sass/assets/fonts/bootstrap",
         dest: "fonts/bootstrap"
     }))
+    .use(inPlace())
     .use(sass())
     .use(layouts('handlebars'))
     .build(err => {
@@ -22,4 +24,4 @@ Metalsmith(__dirname)
         } else {
             console.log('Build succeeded');
         }
-    }); 
+    });
