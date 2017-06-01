@@ -8,6 +8,7 @@
     "handlebars": "^4.0.10",
     "metalsmith": "^2.3.0",
     "metalsmith-layouts": "^1.8.1",
-    "metalsmith-sass": "^1.4.0"
+    "metalsmith-sass": "^1.4.0",
+    "metalsmith-static": "^0.0.5"
   }
 }
