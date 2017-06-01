@@ -10,9 +10,7 @@ Metalsmith(__dirname)
     .destination('./build')
     .clean(true)
     .use(sass())
-    .use(layouts({
-        engine: 'handlebars'
-    }))
+    .use(layouts('handlebars'))
     .build(err => {
         if (err) {
             throw err;
