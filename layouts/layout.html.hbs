@@ -2,14 +2,21 @@
 <html>
 <head>
     <title>{{ title }}</title>
+    <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>{{ title }}</h1>
-    {{{ contents }}}
 
-    {{! should be conditional }}
-    {{#if development}}
-        <script src="http://localhost:35729/livereload.js"></script>
-    {{/if}}
+    <div class="container">
+        <h1>{{ title }}</h1>
+
+        <div>
+            {{{ contents }}}
+        </div>
+
+        {{! should be conditional }}
+        {{#if development}}
+            <script src="http://localhost:35729/livereload.js"></script>
+        {{/if}}
+    </div>
 </body>
 </html>
