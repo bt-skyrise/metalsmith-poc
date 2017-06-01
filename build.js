@@ -14,6 +14,7 @@ metalsmith(__dirname)
     .destination('./build')
     .clean(true)
     .use(watch({
+        livereload: true,
         paths: {
             "${source}/**/*": true,
             "layouts/**/*": "**/*"
