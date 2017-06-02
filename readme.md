@@ -16,8 +16,8 @@ Running:
 # install dependencies
 yarn
 
-# build, serve and watch file changes
-yarn run development
+# build, host on a development server and watch file changes
+yarn start
 
 # just build
 yarn build
