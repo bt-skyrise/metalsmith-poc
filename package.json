@@ -3,8 +3,8 @@
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
-    "build": "node build",
-    "start": "node build development"
+    "build": "yarn && node build",
+    "start": "yarn && node build development"
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",

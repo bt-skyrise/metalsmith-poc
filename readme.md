@@ -13,9 +13,6 @@ Features:
 Running:
 
 ```sh
-# install dependencies
-yarn
-
 # build, host on a development server and watch file changes
 yarn start
 
